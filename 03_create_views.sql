@@ -23,9 +23,10 @@ GROUP BY departamento_id;
 
 -- Vista de empleados del departamento TI
 CREATE OR REPLACE VIEW vista_ti AS
-SELECT nombre
+SELECT split_part(nombre, ' ', 1) AS nombre
 FROM empleados
 WHERE departamento_id = (
     SELECT id FROM departamentos WHERE nombre = 'TI'
 );
+
 
