@@ -20,3 +20,12 @@ CREATE OR REPLACE VIEW vista_empleados_por_departamento AS
 SELECT departamento_id, COUNT(*) AS total_empleados
 FROM empleados
 GROUP BY departamento_id;
+
+-- Vista de empleados del departamento TI
+CREATE OR REPLACE VIEW vista_ti AS
+SELECT nombre
+FROM empleados
+WHERE departamento_id = (
+    SELECT id FROM departamentos WHERE nombre = 'TI'
+);
+
