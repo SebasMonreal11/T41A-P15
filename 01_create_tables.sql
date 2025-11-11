@@ -1,3 +1,27 @@
+-- Tabla de departamentos
+CREATE TABLE departamentos (
+    id INT PRIMARY KEY,
+    nombre TEXT NOT NULL
+);
+
+-- Tabla de empleados
+CREATE TABLE empleados (
+    id INT PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    apellido TEXT,
+    edad INT,
+    departamento_id INT REFERENCES departamentos(id)
+);
+
+-- Tabla de productos
+CREATE TABLE productos (
+    id INT PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    stock INT,
+    precio NUMERIC
+);
+
+
 -- Función para calcular el IVA
 CREATE OR REPLACE FUNCTION calcular_iva(monto NUMERIC, tasa NUMERIC DEFAULT 0.16)
 RETURNS NUMERIC AS $$
